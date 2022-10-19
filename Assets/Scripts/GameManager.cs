@@ -4,24 +4,15 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void quit()
     {
-        
+        Application.Quit();
+        Debug.Log("le jeu est quitté bg fais moi confiance");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void MyLoadScene()
     {
-        void quit()
-        {
-            Application.Quit();
-        }
-
-        public void MyLoadScene(int idScene)
-        {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(idScene);
-            Time.timeScale = 1;
-        }
+        UnityEngine.SceneManagement.SceneManager.LoadScene("SampleScene");
+        Time.timeScale = 1;
     }
 }
