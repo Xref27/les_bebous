@@ -27,10 +27,11 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * 5f, rb.velocity.y);
-        if(Mathf.Abs(rb.velocity.x)>0.1f&& Mathf.Abs(rb.velocity.y) < 0.1f)
+        if(Mathf.Abs(rb.velocity.x)<0.1f)
         {
             run.Play();
         }
+        
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (_canJump > 0)
