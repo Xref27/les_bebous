@@ -10,11 +10,24 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private PlayerInput pl;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Vector2 movementInput;
+    public static PlayerMovement Instance { get; private set; }
+
+    private Rigidbody2D rb;
+    private int _canJump = 2;
+
+    public int jumpForce;
+
+    private void Awake()
+        Instance = this;
+    }
 
     [Space]
     [Header("Jump")]
     [SerializeField] private float jumpPower;
-
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+	}
     [Space]
     [Header("Movement")]
     [SerializeField] private float horizontalMovement;
@@ -27,9 +40,11 @@ public class PlayerMovement : MonoBehaviour
         pl = GetComponent<PlayerInput>();
     }
 
-    void Update()
+    
+
+    private void Update()
     {
-        if (coll.onGround)
+                if (coll.onGround)
         {
             isInTheAir = false;
         }
@@ -39,6 +54,8 @@ public class PlayerMovement : MonoBehaviour
         }
 
         rb.velocity = new Vector2(horizontalMovement * speedMovement, rb.velocity.y);
+
+        //rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * 5f, rb.velocity.y);
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -62,5 +79,22 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.velocity = new Vector2(rb.velocity.x, 0);
         rb.velocity += dir * jumpPower;
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (_canJump > 0)
+            {
+                rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+                _canJump--;
+            }
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            _canJump = 2;
+        }
+    }
     }
 }
