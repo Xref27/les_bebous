@@ -12,14 +12,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Vector2 movementInput;
     public static PlayerMovement Instance { get; private set; }
 
-    private Rigidbody2D rb;
     private int _canJump = 2;
 
     public int jumpForce;
-
-    private void Awake()
-        Instance = this;
-    }
+    
 
     [Space]
     [Header("Jump")]
@@ -36,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Awake()
     {
+        Instance = this;
         coll = GetComponent<Collision>();
         pl = GetComponent<PlayerInput>();
     }
@@ -97,4 +94,3 @@ public class PlayerMovement : MonoBehaviour
         }
     }
     }
-}
