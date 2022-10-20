@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadGame()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("SampleScene");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Niveau_1");
         Time.timeScale = 1;
     }
 
