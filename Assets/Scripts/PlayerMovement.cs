@@ -7,10 +7,12 @@ public class PlayerMovement : MonoBehaviour
     public static PlayerMovement Instance { get; private set; }
 
     private Rigidbody2D rb;
+    private SpriteRenderer sr;
     private int _canJump = 2;
 
     public int jumpForce;
-
+    public AudioSource run;
+    public AudioSource jumpsound;
     private void Awake()
     {
         Instance = this;
@@ -19,20 +21,31 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
     }
-
 
 
     private void Update()
     {
         rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * 5f, rb.velocity.y);
+        if (rb.velocity.x < 0){
+            sr.flipX = true;
+        } else {
+            sr.flipX = false;
+        }
 
+        if(Mathf.Abs(rb.velocity.x)<0.1f)
+        {
+            run.Play();
+        }
+        
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (_canJump > 0)
             {
                 rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
                 _canJump--;
+                jumpsound.Play();
             }
         }
     }
