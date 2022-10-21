@@ -1,66 +1,60 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("References")]
-    [SerializeField] private Collision coll;
-    [SerializeField] private PlayerInput pl;
-    [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private Vector2 movementInput;
+    public static PlayerMovement Instance { get; private set; }
 
-    [Space]
-    [Header("Jump")]
-    [SerializeField] private float jumpPower;
+    private Rigidbody2D rb;
+    private SpriteRenderer sr;
+    private int _canJump = 2;
 
-    [Space]
-    [Header("Movement")]
-    [SerializeField] private float horizontalMovement;
-    [SerializeField] private float speedMovement;
-    [SerializeField] private bool isInTheAir;
-
-    void Awake()
+    public int jumpForce;
+    public AudioSource run;
+    public AudioSource jumpsound;
+    private void Awake()
     {
-        coll = GetComponent<Collision>();
-        pl = GetComponent<PlayerInput>();
+        Instance = this;
     }
 
-    void Update()
+    private void Start()
     {
-        if (coll.onGround)
-        {
-            isInTheAir = false;
-        }
-        else
-        {
-            isInTheAir = true;
-        }
-
-        rb.velocity = new Vector2(horizontalMovement * speedMovement, rb.velocity.y);
+        rb = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
     }
 
-    public void OnMove(InputAction.CallbackContext context)
-    {
-        horizontalMovement = context.ReadValue<Vector2>().x;
-    }
 
-    public void OnJump(InputAction.CallbackContext context)
+    private void Update()
     {
-        if (context.performed && coll.onGround)
-        {
-            Jump(Vector2.up);
+        rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * 5f, rb.velocity.y);
+        if (rb.velocity.x < 0){
+            sr.flipX = true;
+        } else {
+            sr.flipX = false;
         }
-        if (context.canceled && rb.velocity.y > 0f)
+
+        if(Mathf.Abs(rb.velocity.x)<0.1f)
         {
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+            run.Play();
+        }
+        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (_canJump > 0)
+            {
+                rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+                _canJump--;
+                jumpsound.Play();
+            }
         }
     }
 
-    private void Jump(Vector2 dir)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        rb.velocity = new Vector2(rb.velocity.x, 0);
-        rb.velocity += dir * jumpPower;
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            _canJump = 2;
+        }
     }
 }
