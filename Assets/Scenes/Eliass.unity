@@ -1350,8 +1350,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4, y: 78}
-  m_SizeDelta: {x: 492.7709, y: 86.2216}
+  m_AnchoredPosition: {x: -0.6273, y: 61}
+  m_SizeDelta: {x: 483.5164, y: 113.985}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &886775677
 MonoBehaviour:
@@ -1375,18 +1375,20 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 76
+    m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 5
     m_MaxSize: 125
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: NOM DU JEU
+  m_Text: 'Mario 32
+
+    GOTY Edition'
 --- !u!222 &886775678
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1836,6 +1838,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Pause: {fileID: 753819152}
+  Win: {fileID: 0}
   IsPause: 0
 --- !u!4 &1679446404
 Transform:

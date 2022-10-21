@@ -578,11 +578,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3486609851005395193, guid: f97b0d380fa08e141ad8abdf467267b5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.96
+      value: -5.04
       objectReference: {fileID: 0}
     - target: {fileID: 3486609851005395193, guid: f97b0d380fa08e141ad8abdf467267b5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.43
+      value: -1.1
       objectReference: {fileID: 0}
     - target: {fileID: 3486609851005395193, guid: f97b0d380fa08e141ad8abdf467267b5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1712,7 +1712,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Pause: {fileID: 1213845900}
-  Win: {fileID: 0}
+  Win: {fileID: 720238588}
   IsPause: 0
 --- !u!4 &1144557455
 Transform:
@@ -1853,7 +1853,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -2023,10 +2023,10 @@ RectTransform:
   m_Father: {fileID: 1602637517}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -618, y: 326}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 79.25424, y: -36.79767}
+  m_SizeDelta: {x: 104.508484, y: 19.595306}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1372184924
 MonoBehaviour:
@@ -4055,7 +4055,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 5.4715695}
