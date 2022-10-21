@@ -10,12 +10,12 @@ public class GameManager : MonoBehaviour
     public void quit()
     {
         Application.Quit();
-        Debug.Log("le jeu est quitté bg fais moi confiance");
+        Debug.Log("le jeu est quittÃ© bg fais moi confiance");
     }
 
     public void LoadGame()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("SampleScene");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Niveau_1");
         Time.timeScale = 1;
     }
 
