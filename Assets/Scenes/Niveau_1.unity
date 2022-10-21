@@ -214,9 +214,17 @@ PrefabInstance:
       propertyPath: prewarm
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1981600493101611189, guid: 542a737c53fce194bb2fc2525314e634, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 0.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 1981600493101611189, guid: 542a737c53fce194bb2fc2525314e634, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 1981600493101611191, guid: 542a737c53fce194bb2fc2525314e634, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.07
+      value: 5.04
       objectReference: {fileID: 0}
     - target: {fileID: 1981600493101611191, guid: 542a737c53fce194bb2fc2525314e634, type: 3}
       propertyPath: m_LocalPosition.y
